@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Learning jQuery</title>
+<script type="text/javascript"
+src="https://code.jquery.com/jquery-3.7.1.min.js"
+integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+crossorigin="anonymous">
+</script>
+<style>
+.panel
+{
+    width:480px;
+    height:auto;
+    border: 2px solid #000000;
+}
+.panel-header
+{
+    width:100%;
+    padding: 15px 5px;
+    text-align: center;
+    line-height: 25px;
+    border-bottom: 1px solid #000000;
+    
+}
+.panel-body
+{
+    width: 100%;
+    padding: 15px;
+    display: none;
+}
+
+.box
+{
+    width:150px;
+    height:150px;
+    border: 1px solid #212529;
+    background-color: #E90000;
+    position: relative;
+}
+
+.move
+{
+    width: 150px;
+    height: 150px;
+    border: 1px solid #212529;
+    background-color: #E90000;
+    position: relative;
+}
+
+.bar
+{
+    width: 400px;
+    height:30px;
+    border: 1px solid#212529;
+}
+.progress
+{
+    width:0;
+    height:100%;
+    background:linear-gradient(to right,red,rgb(115, 217, 115),yellow,orange)
+}
+
+.bgcolor
+{
+    width: 150px;
+    height: 150px;
+    background-color: #E90000;
+}
+
+
+</style>
+<script>
+$(document).ready(function(){
+$("#btnclick").click(function(){
+alert("hello jQuery");
+});
+
+$("#btnhide").click(function(){
+    $("img[alt='logo']").hide(1000,function(){alert("hide");});
+});
+$("#btnshow").click(function(){
+    $("img[alt='logo']").show(1000,function(){alert("visible");});
+});
+$("#btntoggle").click(function(){
+    $("img[alt='logo']").toggle(1000,function(){alert("toggling");
+});
+
+$("#btnfadeout").click(function(){
+    $("img[alt='logo']").fadeOut();
+});
+$("#btnfadein").click(function(){
+    $("img[alt='logo']").fadeIn();
+});
+
+$("#btnfadetoggle").click(function(){
+    $("img[alt='logo']").fadeToggle();
+});
+
+$("#btnfadeto").click(function(){
+    $("img[alt='logo']").fadeTo(1000,0.4);
+});
+});
+
+$("panel-header").click(function(){
+    $(".panel-header+.panelbody").slideDown();
+});
+
+let headers=$(".panel-header");
+headers.each(function(index,header){
+    $(header).click(function(){
+        //console.log();
+        bodies=$(".panel-body");
+        bodies.each(function(index,body){
+            $(this).hide();
+        });
+        $(this).next().slideDown(1000)
+
+    });
+});
+
+
+$("#btnanimate").click(function(){
+    $(".box").animate({left:"300px"});
+    $(".box").animate({top:"300px"});
+    $(".box").animate({left:"0"});
+    $(".box").animate({top:"0"});
+});
+
+$("#btnanimate2").click(function(){
+    $(".box").animate({
+                      width:"300px",
+                      height:"300px",
+                      opacity:"0.6",
+                      borderRadius:"50%"},1000);
+});
+
+
+$(".move").click(function(){
+    $(this).animate({left:'+=200px'},
+    {
+        duration:'2000',
+        easing:'linear'
+    });
+    });
+
+$("#btndownload").click(function(){
+    $(".progress").animate({width:"400px"},{easing:'linear',duration:'500',step:function(x){
+$("#result").text(x*100/400+"%");
+}})
+/*$(this).css('background-color,green');*/
+
+
+});
+
+   
+
+$("#btncss").click(function(){
+$(".bgcolor").css({"width":"300px","height":"300px"});
+});
+
+$("#btncss2").click(function(){
+    let w=$(".bgcolor").css("width");
+    alert(w);
+});
+
+$("#mycheckbox").change(function(){
+    alert($(this).attr('checked')+","+$(this).prop('checked'));
+});
+
+});   
+</script>
+</head>
+<body>
+    <button id="btnclick">click</button>
+    <img alt="logo" src="images/c.png"/>
+<br/>
+<button id="btnhide">Hide</button>
+<button id="btnshow">Show</button>
+<button id="btntoggle">Toggle</button>
+<button id="btnfadeout">Fadeout</button>
+<button id="btnfadein">Fadein</button>
+<button id="btnfadetoggle">Toggle</button>
+<button id="btnfadeto">Fadeto</button>
+
+
+<div class="panel">
+    <div class="panel-header">
+        First Header
+    </div>
+    <div class="panel-body">
+        First Body
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-header">
+        Second Header
+    </div>
+    <div class="panel-body">
+        Second Body
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-header">
+        Third Header
+    </div>
+    <div class="panel-body">
+        Third Body
+    </div>
+</div>
+
+<div class="box"></div>
+<button id="btnanimate">Animate</button>
+<button id="btnanimate2">Animate</button>
+
+
+<div class="move"></div>
+
+<div class="bar">
+    <div class="progress"></div>
+</div>
+<p id="result"></p>
+<button id="btndownload">Download<button>
+
+
+<div class="bgcolor"></div>
+<button id="btncss">Set css</button>
+<button id="btncss2">Get css</button>
+<br/>
+<input Type="checkbox" id="mycheckbox"checked="checked"/>
+
+    
+</body>
+</html>

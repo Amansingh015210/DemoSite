@@ -1,0 +1,37 @@
+<!Doctype html>
+<html>
+<head>
+<title>BOM</title>
+<script>
+function getLocation()
+{
+console.log(`href=${location.href}`);
+console.log(`protocol=${location.protocol}`);
+console.log(`port=${location.port}`);
+console.log(`origin=${location.origin}`);
+console.log(`hash=${location.hash}`);
+console.log(`QueryString=${location.search}`);
+console.log(`path=${location.pathname}`);
+console.log(`host=${location.host}`);
+console.log(`hostname=${location.hostname}`);
+
+}
+
+getLocation();
+
+</script>
+</head>
+<body>
+<h2>Browser</h2>
+<button id="btnrefresh" onclick="location.reload();">Refresh</button>
+<button id="btnreplaceurl" onclick="location.replace('http://www.google.com');">Google</button>
+
+<select id="ddlsocial" onchange="location.assign(this.value);">
+<option value="">--Select Social Links--</option>
+<option value="https://www.facebook.com">Facebook</option>
+<option value="https://www.instagram.com">Instagram</option>
+<option value="https://www.google.com">Google</option>
+
+</select>
+</body>
+</html>

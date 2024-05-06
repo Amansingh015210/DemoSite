@@ -1,0 +1,24 @@
+.active{
+background-color:#E90000!important;
+color:#f2f2f2!important;
+}
+
+.nav a{
+display:inline-block;
+padding:10px 15px;
+background-color:#e5e5e5;
+color:#212529;
+}
+
+.bg{
+background-color:#e90000;
+color:#f2f2f2;
+}
+
+.toggleBox{
+width:200px;
+height:200px;
+line-height:200px;
+text-align:center;
+}
+

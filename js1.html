@@ -1,0 +1,52 @@
+<html>
+<head>
+<title></title>
+<script>
+
+let screenDetails=function(){
+console.log(`height=${screen.height}`);
+console.log(`width=${screen.width}`);
+console.log(`Available height=${screen.availHeight}`);
+console.log(`Available width=${screen.availWidth}`);
+console.log(`pixel Depth=${screen.pixelDepth}`);
+}
+
+screenDetails();
+
+
+/*navigator*/
+
+let getBrowser=()=>{
+console.log(`App Code Name:${navigator.appCodeName}`);
+console.log(`Browser Name:${navigator.appName}`);
+console.log(`Browser Version:${navigator.appVersion}`);
+console.log(`Is Cookie Enabled:${navigator.cookieEnabled}`);
+console.log(`Is Online:${navigator.online}`);
+console.log(`User Agent:${navigator.userAgent}`);
+console.log(`Browser Platform:${navigator.platform}`);
+console.log(`Browser Engine:${navigator.product}`);
+}
+
+getBrowser();
+
+
+
+
+function getlatlng()
+{
+if(navigator.geolocation)
+{
+navigator.geolocation.getCurrentPosition((position)=>{
+console.log(position.coordilongitude);
+console.log(position.coordilatitude);
+});
+}}
+getlatlng();
+
+</script>
+</head>
+<body>
+<button id="btnback" onclick="history.back();">Back</button>
+<button id="btnnext" onclick="history.forward();">Next</button>
+</body>
+</html>

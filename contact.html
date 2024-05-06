@@ -1,0 +1,445 @@
+<html>
+<head>
+<title></title>
+<style>
+
+.notices{
+width:200px;
+height:200px;
+overflow:hidden;
+background-color:#d5d5d5;
+border:1px solid #212529;
+}
+.notice-item
+{
+width:100%;
+padding:5px;
+transition:0.5s;
+}
+.notice-item:not(:last-child)
+{
+border:1px dotted #212529;
+}
+
+.adv
+{
+  width:400px;
+  height:400px;
+  border:1px solid #E90000;
+  background-image: linear-gradient(rgb(174,0,255),rgb(230,11,142));
+  color:whitesmoke;
+  text-align: center;
+  position:fixed;
+  left:50%;
+  top:-400px;
+  transform:translate(-50%,-50%);
+  transition: 1s;
+}
+
+.close
+{
+  opacity: 0.1;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000000;
+  background-color: rgba(0,0,0,0.6);
+  text-align: center;
+  line-height: 40px;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  text-decoration: none;
+  color:#f2f2f2;
+  font-weight: bold;
+}
+
+.panel-body
+{
+  width:100%;
+  padding:10px;
+  text-align: justify;
+  background-color: #e5e5e5;
+  color: #000000;
+  display: none;
+}
+.panel-header
+{
+  width:100%;
+  padding:10px;
+  text-align: center;
+  background-color: #000000;
+  color:#F2F2F2;
+}
+
+
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="style1.css">
+<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+
+
+
+
+<button id="btn20"onclick="fun(event)"></button>
+<script>
+function fun(e)
+{
+  console.log(e);
+}
+
+
+
+
+
+
+</script>
+<div class="adv">
+  <a href="#" class="close">X</a>
+  <div class="info">
+  <h2>50%OFF</h2>
+  <p>Offer limited till feb 29th,2024</p>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("load",()=>{
+  setTimeout(()=>{
+let adv=document.querySelector(".adv");
+adv.style.top="50%";
+},2000);
+let btnclose=document.querySelector(".close")
+btnclose.addEventListener("click",function(){
+this.parentElement.style.width='200%';
+this.parentElement.style.height='200%';
+this.parentElement.style.opacity='0';
+});
+});
+
+
+
+
+</script>
+
+
+
+  
+
+
+  <div class="panel">
+    <div class="panel-header">
+      First Header
+    </div>
+    <div class="panel-body">
+      First body
+    </div>
+    <div class="panel-header">
+      Second Header
+    </div>
+    <div class="panel-body">
+      Second body
+    </div>
+    <div class="panel-header">
+      Third Header
+    </div>
+    <div class="panel-body">
+      Third body
+    </div>
+</div>
+
+
+      
+
+
+
+<script>
+  window.addEventListener("load",()=>{
+    let headers=document.querySelectorAll(".panel-header");
+    for(let header of headers)
+    {
+    header.addEventListener("click",function(){
+     //alert(this.nextElementSibling.style.display);
+     if(this.nextElementSibling.style.display=='none')
+     {
+      
+      this.nextElementSibling.style.display='block';
+     }
+     else
+     {
+      this.nextElementSibling.style.display='none';
+      }
+      });
+    }
+  });
+
+</script>
+
+
+<div class="X">
+  <p>this is a paragraph</p>
+</div>
+<button id="btnbefore">Insert Before</button>
+<script>
+document.querySelector("#btnbefore").addEventListener("click",()=>{
+  let parentElement=document.querySelector(".X");
+  let existingElement=document.querySelector(".X>p");
+  let newElement=document.createElement("h2");
+  newElement.innerText="This is heading";
+  parentElement.insertBefore(newElement,existingElement);
+}); 
+</script>
+
+<div class="Z">
+  <p>Hello World</p>
+</div>
+<button id="btntext">Insert Text</button>
+<button id="btnelement">Insert Element</button>
+<button id="btnelement">Insert Html</button>
+<script>
+  document.querySelector("#btntext").onclick=function(){
+    let element=document.querySelector(".Z");
+    element.insertAdjacentText("beforeEnd","It is my life");
+  };
+
+  document.querySelector("#btnelement").addEventListener("click",()=>{
+  let element=document.querySelector(".Z");
+  let h2=document.createElement("h2");
+  h2.innerText="My slogan";
+  element.insertAdjacentElement("afterBegin",h2);
+});
+
+
+document.querySelector("#btnhtml").onclick=function(){
+    let element=document.querySelector(".Z");
+    element.insertAdjacentHtml("beforeBegin","<h1>Learn Insert method</h1>");
+  };
+
+</script>
+
+
+<ul class="list">
+  <li>Item-1</li>
+  <li>Item-2</li>
+  <li>Item-3</li>
+  <li>Item-4</li>
+</ul>
+<button id="btnremovechild">removeChild</button>
+<button id="btnremove">Remove</button>
+<script>
+  document.getElementById("btnremovechild").addEventListener("click",()=>{
+    let list=document.querySelector(".list");
+    let item=document.querySelector(".list>li:nth-child(2)");
+    list.removeChild(item);
+  });
+  document.querySelector("#btnremove").addEventListener("click",()=>{
+    let list=document.querySelector(".list");
+    list.remove();
+  });
+</script>
+
+<button id="btnreplacechild">Replace child</button>
+<script>
+document.querySelector("#btnreplacechild").addEventListener("click",()=>{
+let list=document.querySelector("list");
+let item3=document.querySelector(".list">li:nth-child(3)");
+let newItem=document.createElement("li");
+newItem.innerText="item 5";
+list.replaceChild(newItem,item3);
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<div class="images">
+<div class="images-item">
+  <img src="images/a.jpg"height="100px">
+
+  <div class="images-item">
+    <img src="images/b.jpg"height="100px">
+
+
+    <div class="images-item">
+      <img src="images/c.png"height="120px">
+
+
+</div>
+
+
+
+
+
+
+
+<div class="notices">
+
+<div class="notice-item">
+Item1
+</div><div class="notice-item">
+Item2
+</div><div class="notice-item">
+Item3
+</div><div class="notice-item">
+Item4
+</div><div class="notice-item">
+Item5
+</div><div class="notice-item">
+Item6
+</div><div class="notice-item">
+Item7
+</div><div class="notice-item">
+Item8
+</div><div class="notice-item">
+Item9
+</div><div class="notice-item">
+Item10
+</div><div class="notice-item">
+Item11
+</div><div class="notice-item">
+Item12
+</div><div class="notice-item">
+Item13
+</div><div class="notice-item">
+Item14
+</div>
+<div class="notice-item">
+Item15
+</div>
+</div>
+
+<script>
+setInterval(()=>{
+let notice=document.querySelector(".notices");
+let firstItem=notice.firstElementChild;
+/*let itemHeight=firstItem.offsetHeight;
+firstItem.style.marginTop=`-${itemHeight}px`;*/
+notice.appendChild(firstItem);
+notice.style.marginTop="0px";},1000);
+</script>
+
+
+
+
+
+<div id="cube"></div>
+<button id="btncreate">Create Element</button>
+
+
+
+
+<div>
+<ul id="fruits">
+<li>Apple</li>
+<li>Mango</li>
+<li>Banana</li>
+<li>Orange</li>
+<li>Grapes</li>
+</ul>
+
+
+<button id="btnfirst">First</button>
+<button id="btnlast">Last</button>
+<button id="btnzebra">Zebra</button>
+
+<div class="nav">
+<a href="index1.html">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="toggleBox">
+CLICK ME
+</div>
+<button id="btntoggle">Toggle</button>
+<button id="btnremove">Remove</button>
+<script type="text/javascript">
+let btntoggle=document.querySelector("#btntoggle");
+btntoggle.addEventListener("click",()=>{
+document.querySelector(".toggleBox").classList.toggle("bg");
+});
+document.querySelector("#btnremove").addEventListener("click",()=>{
+document.querySelector(".toggleBox").classList.remove("toggleBox");
+});
+/*
+document.querySelector("#btndetails").addEventListener("click",()=>{
+document.querySelector("#info").innerHTML=document.querySelector("#beverages").textContent;
+});
+
+*/
+
+
+document.getElementById("btncreate").addEventListener("click",()=>{
+let cube=document.getElementById("cube");
+let h2=document.createElement("h2");
+let text=document.createTextNode("hello");
+let attr=document.createAttribute("id");
+attr.value="demo";
+h2.setAttributeNode(attr);
+h2.appendChild(text);
+cube.appendChild(h2);
+let comment=document.createComment("This is element on fly");
+cube.appendChild(comment);
+});
+
+
+
+document.getElementById("btnlast").addEventListener("click",()=>{
+let fruits=document.getElementById("fruits");
+let last=fruits.lastElementChild;
+last.style.backgroundColor="#E90000";
+last.style.color="f2f2f2";
+});
+
+
+document.getElementById("btnzebra").addEventListener("click",()=>{
+let fruits=document.getElementById("fruits");
+let noc=fruits.childElementCount;
+for(let i=0;i<noc;i++)
+{
+  if(i%2==0)
+{
+fruits.children[i].style.backgroundColor="#2d5474";
+fruits.children[i].style.color="#f2f2f2";
+}
+else
+{
+fruits.children[i].style.backgroundColor="yellow";
+fruits.children[i].style.color="#000000";
+}
+}
+});
+
+
+
+
+let i=setInterval(()=>{
+let fruits=document.getElementById("fruits");
+let firstchild=fruits.firstElementChild;
+fruits.appendChild(firstchild);},1000);
+
+</script>
+
+
+<ul id="beverages">
+<li>Tea</li>
+<li>Coffee</li>
+<li>Milk</li>
+</ul>
+<button id="btndetails">Details</button>
+<p id="info"></p>
+
+
+
+
+</body>
+</html>

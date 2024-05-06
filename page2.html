@@ -1,0 +1,525 @@
+<html>
+<head>
+<title></title>
+<style>
+.fixed{
+position:fixed;
+left:0;
+bottom:0;
+padding:25px;
+background-color:#f9f2f2;
+width:100%;
+
+}
+
+
+.clock{
+width:300px;
+height:100px;
+line-height:100px;
+text-align:center;
+background-color:#d5d5d5;
+border-radius:25px;
+margin:0 auto;
+}
+
+
+
+
+.time
+{
+font-size:48px;
+font-weight:bold;
+}
+
+
+.StopWatch{
+width:300px;
+height:100px;
+line-height:100px;
+text-align:center;
+background-color:#d5d5d5;
+border-radius:25px;
+margin:0 auto;
+}
+.watch{
+font-size:48px;
+font-weight:bold;
+
+}
+
+
+
+.mybox{
+width:250px;
+height:250px;
+border:2px solid #000;
+padding:10px;
+overflow:auto;
+}
+
+
+
+</style>
+
+<script>
+function getColors()
+{
+let bgcolor=localStorage.getItem("bgcolor");
+let forecolor=localStorage.getItem("forecolor");
+console.log(bgcolor);
+console.log(forecolor);
+}
+
+function sayHello(name)
+{
+window.alert(`Hello${name}`);
+}
+
+
+function sayBye()
+{
+let name=prompt("What is your name");
+alert(`Bye ${name}`);
+}
+
+function Addition()
+{
+let add=prompt("Add 2 number");
+alert(`${add}`);
+}
+
+
+function displayName()
+{
+let name=prompt("Enter your name");
+if(confirm("Do you want to display name?"))
+{
+alert(`your name is ${name}`);
+}
+else
+{
+alert(`you choose not to display`);
+}
+}
+
+
+function fun1()
+{
+console.log("fun1");
+}
+
+console.log("start");
+let t=setTimeout(fun1,3000);
+console.log("end");
+
+
+let t2=setTimeout(function(name){
+alert(`Hello ${name}`);
+},2000,'Aman');
+
+
+
+let t1=setInterval(()=>console.log('India is my country'),100);
+
+
+
+
+window.addEventListener("mousemove",(event)=>{
+console.clear();
+console.log(`x=${event.clientX}`);
+console.log(`y=${event.clientY}`);
+});
+
+
+function getxy(event)
+{
+console.clear();
+console.log(`x=${event.clientX}`);
+console.log(`y=${event.clientY}`);
+}
+
+
+
+
+function getSelectedText()
+{
+let text=window.getSelection();
+alert(text);
+}
+
+
+
+
+let w;
+function openWindow()
+{
+w=window.open("","_blank","width=300,height=300,top=100,left=200");
+w.focus();
+}
+
+
+
+
+function closeWindow()
+{
+if(!w.closed)
+{
+w.close();
+}
+}
+
+
+function moveWindowTo(x,y)
+{
+w.moveTo(x,y);
+w.location.href='https:www.google.com';
+w.focus();
+}
+
+function moveWindowBy(x,y)
+{
+w.moveTo(x,y);
+w.focus();
+}
+
+
+function resizeWindowTo(w,h)
+{
+
+w.resizeTo(w,h);
+w.focus();
+}
+
+function resizeWindowBy(w,h)
+{
+
+w.resizeBy(w,h);
+w.focus();
+}
+
+
+function scrollWindowTo(x,y)
+{
+window.scrollTo(x,y);
+window.focus();
+}
+
+function scrollWindowBy(x,y)
+{
+window.scrollBy(x,y);
+window.focus();
+}
+
+/*DOM*/
+
+console.log(document.documentElement);
+console.log(document.head);
+console.log(document.body);
+console.log(document.title);
+console.log(document.domain);
+console.log(document.URL);
+console.log(document.lastModified);
+
+
+
+
+window.addEventListener("load",()=>{
+document.title="hello";
+});
+
+window.addEventListener("focus",()=>{
+document.title="hello";
+});
+
+window.addEventListener("blur",()=>{
+document.title="bye";
+});
+
+
+
+console.log(document.referrer);
+
+
+function getCookies()
+{
+let allCookies=document.cookie;
+console.log(allCookies);
+}
+
+
+
+
+function setCookie(key,value)
+{
+let dt=new Date();
+dt.setTime(dt.getTime()+1000*60*60);
+let expiryDate=dt.toUTCString();
+document.cookie=`${key}=${value};expiry=${expiryDate};path=/`;
+}
+
+
+
+
+let k=10;
+document.write(k);
+
+document.write("hello");
+
+
+document.write("<h2>Sakshi</h2>");
+
+
+/*function getxy(e)
+{
+let x=e.clientX;
+let y=e.clientY;
+document.write(`x=${x},y=${y}`);
+}
+document.addEventListener("mousemove",getxy);*/
+
+
+
+
+
+function getCurrentTime()
+{
+let time=document.getElementsByClassName("time")[0];
+let dt=new Date();
+time.innerHTML=dt.toLocaleTimeString();
+}
+setInterval(getCurrentTime,1000);
+
+
+
+
+/*Stop Watch*/
+
+/*
+function getCurrentStopTime()
+let watch=document.getElementsByClassName("watch")[0];
+let dt=new Date();
+watch.innerHTML=dt.toLocaleTimeString();
+}
+setInterval(getCurrentStopTime,1000*60);
+*/
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<div class="clock">
+<p class="time"></p>
+</div>
+<script>
+getCurrentTime();
+</script>
+
+
+
+
+<div class="StopWatch">
+<p class="watch"></p>
+</div>
+<script>
+getCurrentStopTime();
+</script>
+
+
+
+
+
+<select id="ddldays">
+<option value=" ">--Select Day--</option>
+<script type="text/JavaScript">
+for(let i=1;i<=31;i++)
+{
+document.write(`<option value=${i}>${i}</option>`);
+}
+</script>
+</select>
+
+<select id="ddlmonths">
+<option value=" ">--Select Month--</option>
+<script type="text/JavaScript">
+let months=["Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+
+for(let i=0;i<months.length;i++)
+{
+document.write(`<option value=${i}>${months[i]}</option>`);
+}
+</script>
+</select>
+
+
+<select id="ddlyears">
+<option value=" ">--Select Year--</option>
+<script type="text/JavaScript">
+let dt=new Date();
+let ys=dt.getFullYear()-100;
+let ye=dt.getFullYear();
+for(let i=ys;i<=ye;i++)
+{
+document.write(`<option value=${i}>${i}</option>`);
+}
+</script>
+</select>
+
+
+
+
+<img alt="logo" src="image/a.jpg"/>
+<button id="btnchange">Change Image</button>
+<script type="text/JavaScript">
+let changeButton=document.getElementById("btnchange");
+changeButton.addEventListener("click",()=>{
+     let image=document.querySelector("img[alt='logo']");
+     image.src="image/b.jpg";
+});
+</script>
+
+
+
+
+<div class="mybox">
+Hello
+</div>
+<button id="btndimension">Get Dimension</button>
+
+<p id=result></p>
+<script>
+document.querySelector("#btndimension").addEventListener("click",()=>{
+let mybox=document.querySelector(".mybox");
+let result=document.querySelector("#result");
+result.innerHTML=`client Height=${mybox.clientHeight},
+client width=${mybox.clientWidth},offset Height=${mybox.offsetHeight},offset width=${mybox.offsetWidth}`;});
+</script>
+
+
+
+
+
+
+
+
+
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+     
+
+
+
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.
+To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.
+Themes and styles also help keep your document coordinated. When you click Design and choose a new Theme, the pictures, charts, and SmartArt graphics change to match your new theme. When you apply styles, your headings change to match the new theme.
+Save time in Word with new buttons that show up where you need them. To change the way a picture fits in your document, click it and a button for layout options appears next to it. When you work on a table, click where you want to add a row or a column, and then click the plus sign.
+Reading is easier, too, in the new Reading view. You can collapse parts of the document and focus on the text you want. If you need to stop reading before you reach the end, Word remembers where you left off - even on another device.
+
+
+
+<button id="btnset" onclick="getColors()">Get key</button>
+
+<button id="btnalert" onclick="sayHello('Sakshi');">Say Hello</button>
+<button id="btnprompt" onclick="sayBye();">Say Bye</button>
+<button id="btnadd" onclick="Addition();">Add 2 Numbers</button>
+<button id="btnadd" onclick="displayName();">Confirm</button>
+<button id="btnclear" onclick="clearTimeout(t);">Clear Timeout</button>
+<button id="btnclear2" onclick="clearInterval(t1);">Clear Interval</button>
+<button id="btnselection" onclick="getSelectedText();">Selected Text</button>
+
+<div class="fixed">
+<button id="btnopen" onclick="openWindow();">Open</button>
+<button id="btnclose" onclick="closeWindow();">Close</button>
+<button id="btnmoveto" onclick="moveWindowTo(500,500);">Move to</button>
+<button id="btnmoveby" onclick="moveWindowBy(50,50);">Move By</button>
+<button id="btnresizeto" onclick="resizeWindowTo(600,600);">Resize To</button>
+<button id="btnresizeby" onclick="resizeWindowBy(100,100);">Resize By</button>
+
+<button id="btnscrollto" onclick="scrollWindowTo(0,100);">Scroll To</button>
+<button id="btnscrollby" onclick="scrollWindowBy(0,10);">Scroll By</button>
+<button id="btnprint" name="btnprint" onclick="window.print();">Print</button>
+<button id="btncookie" onclick="getCookies();">Cookies</button>
+
+<button id="btncookies" onclick="setCookie('user','scott');")Cookie</button>
+<button id="btncookies" onclick="getCookie();">Cookie</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

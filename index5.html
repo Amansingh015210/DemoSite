@@ -1,0 +1,103 @@
+<html>
+<head>
+<title></title>
+<style>
+.mybox{
+width:250px;
+height:250px;
+border:2px solid #000;
+padding:10px;
+overflow:auto;
+}
+
+</style>
+
+<body>
+<div>
+<p id="p150"></p>
+<button id="btnchange">Change Inner</button>
+<button id="btnchange2">Change Outer</button>
+</div>
+
+<script type="text/javascript">
+
+/*let button15=document.getElementById("btnchange");
+button15.addEventListener("click",()=>{*/
+
+let button2=document.getElementById("btnchange2");
+button2.addEventListener("click",()=>{
+
+let p=document.getElementById("p150");
+/*p.innerHTML="<strong>hello</strong>";*/
+
+p.outerHTML="<h2>hello</h2>";
+});
+</script>
+
+
+
+
+
+<div class="mybox">
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+Hello<br/>
+
+</div>
+<button id="btndimension">Get Dimension</button>
+
+<p id="result"></p>
+<script>
+document.querySelector("#btndimension").addEventListener("click",()=>{
+let mybox=document.querySelector(".mybox");
+let result=document.querySelector("#result");
+result.innerHTML=`client Height=${mybox.clientHeight},client width=${mybox.clientWidth},offset Height=${mybox.offsetHeight},offset width=${mybox.offsetWidth},scroll height=${mybox.scrollHeight},scroll width=${mybox.scrollWidth},client left=${mybox.clientLeft},client top=${mybox.clientTop},offset left=${mybox.offsetLeft},offset top=${mybox.offsetLeft}`;
+});
+</script>
+
+
+
+</body>
+</html>
